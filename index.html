@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курсовая Веренцов Н.В.</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">Список чтения</div>
+            
+            <div class="search-section">
+                <input type="text" class="search-box" placeholder="Введите название книги или автора...">
+                <button class="search-btn">Поиск</button>
+            </div>
+            
+            <button class="add-btn">Добавить книгу</button>
+        </div>
+
+        <div class="controls">
+            <div class="tabs">
+                <div class="tab active">Все книги</div>
+                <div class="tab">Хочу прочитать</div>
+                <div class="tab">Читаю</div>
+                <div class="tab">Завершено</div>
+            </div>
+            
+            <div class="sort-section">
+                <span class="sort-label">Сортировка:</span>
+                <select class="sort-select">
+                    <option>По дате добавления</option>
+                    <option>По названию</option>
+                    <option>По рейтингу</option>
+                    <option>По автору</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="books-grid">
+            <div class="book-card">
+                <div class="book-header">
+                    <div class="book-cover">фото1</div>
+                    <div class="book-info">
+                        <div class="status-badge status-reading">Читаю</div>
+                        <div class="book-title">1984</div>
+                        <div class="book-author">Джордж Оруэлл</div>
+                        <div class="book-meta">
+                            <span class="rating">★★★★☆ <span class="rating-text">(4.2/5)</span></span>
+                            <span class="progress">45%</span>
+                            <span class="pages">213/500 стр.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-actions">
+                    <div class="action-buttons">
+                        <button class="action-btn">✎ Редактировать</button>
+                        <button class="action-btn">⋮ Еще</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <div class="book-header">
+                    <div class="book-cover">фото2</div>
+                    <div class="book-info">
+                        <div class="status-badge status-completed">Завершено</div>
+                        <div class="book-title">Мастер и Маргарита</div>
+                        <div class="book-author">Михаил Булгаков</div>
+                        <div class="book-meta">
+                            <span class="rating">★★★★★ <span class="rating-text">(4.8/5)</span></span>
+                            <span class="progress">100%</span>
+                            <span class="pages">384 стр.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-actions">
+                    <div class="action-buttons">
+                        <button class="action-btn">✎ Редактировать</button>
+                        <button class="action-btn">⋮ Еще</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <div class="book-header">
+                    <div class="book-cover">фото3</div>
+                    <div class="book-info">
+                        <div class="status-badge status-want">Хочу прочитать</div>
+                        <div class="book-title">Atomic Habits</div>
+                        <div class="book-author">Джеймс Клир</div>
+                        <div class="book-meta">
+                            <span class="rating">★★★★☆ <span class="rating-text">(4.5/5)</span></span>
+                            <span class="progress">0%</span>
+                            <span class="pages">320 стр.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-actions">
+                    <div class="action-buttons">
+                        <button class="action-btn">✎ Редактировать</button>
+                        <button class="action-btn">⋮ Еще</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <div class="book-header">
+                    <div class="book-cover">фото4</div>
+                    <div class="book-info">
+                        <div class="status-badge status-completed">Завершено</div>
+                        <div class="book-title">Преступление и наказание</div>
+                        <div class="book-author">Федор Достоевский</div>
+                        <div class="book-meta">
+                            <span class="rating">★★★★☆ <span class="rating-text">(4.3/5)</span></span>
+                            <span class="progress">100%</span>
+                            <span class="pages">672 стр.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-actions">
+                    <div class="action-buttons">
+                        <button class="action-btn">✎ Редактировать</button>
+                        <button class="action-btn">⋮ Еще</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <div class="book-header">
+                    <div class="book-cover">фото5</div>
+                    <div class="book-info">
+                        <div class="status-badge status-reading">Читаю</div>
+                        <div class="book-title">Гарри Поттер и Узник Азкабана</div>
+                        <div class="book-author">Джоан Роулинг</div>
+                        <div class="book-meta">
+                            <span class="rating">★★★★★ <span class="rating-text">(4.7/5)</span></span>
+                            <span class="progress">28%</span>
+                            <span class="pages">145/512 стр.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-actions">
+                    <div class="action-buttons">
+                        <button class="action-btn">✎ Редактировать</button>
+                        <button class="action-btn">⋮ Еще</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <div class="book-header">
+                    <div class="book-cover">фото6</div>
+                    <div class="book-info">
+                        <div class="status-badge status-want">Хочу прочитать</div>
+                        <div class="book-title">Сто лет одиночества</div>
+                        <div class="book-author">Габриэль Гарсиа Маркес</div>
+                        <div class="book-meta">
+                            <span class="rating">★★★★★ <span class="rating-text">(4.6/5)</span></span>
+                            <span class="progress">0%</span>
+                            <span class="pages">416 стр.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-actions">
+                    <div class="action-buttons">
+                        <button class="action-btn">✎ Редактировать</button>
+                        <button class="action-btn">⋮ Еще</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
