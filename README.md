@@ -1,1 +1,5 @@
-# Coursework
+# Курсовая работа (Список чтения). Веренцов Н.В.
+> [!TIP]
+> Шаг 1 - Создание макета сайта в фигме (https://www.figma.com/design/0QPUeaNdMi1ch6S5lWtp9N/Untitled?node-id=2007-3&p=f&t=VjchleTFIylb7Cfl-0) и в html формате (https://github.com/Nofus/Coursework/tree/step-1)  
+> Шаг 2 - ...  
+> Шаг 3 - ...
