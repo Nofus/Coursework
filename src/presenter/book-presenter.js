@@ -2,6 +2,7 @@ import BookComponent from '../view/book-component.js';
 import BookFormComponent from '../view/book-form-component.js';
 import BookDetailComponent from '../view/book-detail-component.js';
 import NullBookComponent from '../view/null-book-component.js';
+import LoadingComponent from '../view/loading-component.js';
 import { render } from '../framework/render.js';
 
 export default class BooksPresenter {
@@ -12,6 +13,8 @@ export default class BooksPresenter {
   #currentBook = null;
   #isSearching = false;
   #searchTerm = '';
+  #loadingComponent = new LoadingComponent();
+  #isLoading = true;
 
   constructor(booksContainer, bookModel, headerComponent) {
     this.#booksContainer = booksContainer;
@@ -20,11 +23,20 @@ export default class BooksPresenter {
     this.#bookModel.addObserver(this.#handleModelChange.bind(this));
   }
 
-  init() {
+  async init() {
+    this.#renderLoading();
+    await this.#bookModel.init();
+    this.#isLoading = false;
+    this.#loadingComponent.removeElement();
     this.#renderBookList();
   }
 
+  #renderLoading() {
+    render(this.#loadingComponent, this.#booksContainer);
+  }
+
   showAddForm() {
+    if (this.#isLoading) return;
     this.#clearContainer();
     this.#currentView = 'add';
     
@@ -36,6 +48,7 @@ export default class BooksPresenter {
   }
 
   showEditForm(book) {
+    if (this.#isLoading) return;
     this.#clearContainer();
     this.#currentView = 'edit';
     this.#currentBook = book;
@@ -50,6 +63,7 @@ export default class BooksPresenter {
   }
 
   showBookDetail(book) {
+    if (this.#isLoading) return;
     this.#clearContainer();
     this.#currentView = 'detail';
     this.#currentBook = book;
@@ -92,6 +106,8 @@ export default class BooksPresenter {
   }
 
   #renderBookList() {
+    if (this.#isLoading) return;
+    
     let books = this.#bookModel.books;
     
     if (this.#isSearching && this.#searchTerm) {
@@ -137,26 +153,41 @@ export default class BooksPresenter {
     render(nullBookComponent, this.#booksContainer);
   }
 
-  #handleModelChange() {
-    if (this.#currentView === 'list') {
+  #handleModelChange(event, payload) {
+    if (this.#currentView === 'list' && !this.#isLoading) {
       this.#clearContainer();
       this.#renderBookList();
     }
   }
 
-  #handleAddBook(bookData) {
-    this.#bookModel.addBook(bookData);
-    this.#showBookList();
+  async #handleAddBook(bookData) {
+    try {
+      await this.#bookModel.addBook(bookData);
+      this.#showBookList();
+    } catch (err) {
+      console.error('Ошибка при добавлении книги:', err);
+      alert('Не удалось добавить книгу. Попробуйте еще раз.');
+    }
   }
 
-  #handleEditBook(bookData) {
-    this.#bookModel.updateBook(this.#currentBook.id, bookData);
-    this.#showBookList();
+  async #handleEditBook(bookData) {
+    try {
+      await this.#bookModel.updateBook(this.#currentBook.id, bookData);
+      this.#showBookList();
+    } catch (err) {
+      console.error('Ошибка при редактировании книги:', err);
+      alert('Не удалось сохранить изменения. Попробуйте еще раз.');
+    }
   }
 
-  #handleDeleteBook(bookId) {
+  async #handleDeleteBook(bookId) {
     if (confirm('Вы уверены, что хотите удалить эту книгу?')) {
-      this.#bookModel.deleteBook(bookId);
+      try {
+        await this.#bookModel.deleteBook(bookId);
+      } catch (err) {
+        console.error('Ошибка при удалении книги:', err);
+        alert('Не удалось удалить книгу. Попробуйте еще раз.');
+      }
     }
   }
 

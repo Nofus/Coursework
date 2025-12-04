@@ -4,9 +4,13 @@ import BookListComponent from './view/book-list-component.js';
 import BookFilterComponent from './view/book-filter-component.js';
 import BooksPresenter from './presenter/book-presenter.js';
 import BookModel from './model/book-model.js';
+import BooksApiService from './books-api-service.js';
 import { render, RenderPosition } from './framework/render.js';
 
-const bookModel = new BookModel();
+const END_POINT = 'https://6931e9b411a8738467d0f86c.mockapi.io';
+
+const booksApiService = new BooksApiService(END_POINT);
+const bookModel = new BookModel({booksApiService});
 
 const bodyContainer = document.querySelector('body');
 const mainContainer = document.querySelector('main');
